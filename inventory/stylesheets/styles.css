@@ -1,0 +1,139 @@
+@import url("https://fonts.googleapis.com/css2?family=Albert+Sans:ital,wght@0,100..900&display=swap");
+::placeholder {
+  color: #B2B2B2;
+}
+
+html {
+  font-size: 0.9em;
+  font-family: "Albert Sans", Arial, Helvetica, sans-serif;
+  font-weight: 400;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  color: white;
+}
+
+h1 {
+  font-size: 2.4rem;
+}
+
+h2 {
+  font-size: 1.7rem;
+}
+
+h3 {
+  font-size: 1.4rem;
+}
+
+h4 {
+  font-size: 1.2rem;
+}
+
+h5 {
+  font-size: 1.05rem;
+}
+
+h6 {
+  font-size: 1rem;
+}
+
+a {
+  display: flex;
+  text-decoration: none;
+  color: inherit;
+}
+
+body {
+  background-color: #161616;
+}
+
+aside {
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: #212121;
+  width: 250px;
+  height: 100vh;
+  padding: 10px;
+  font-weight: 500;
+}
+
+.logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 16px;
+  padding: 1em;
+}
+.logo figure {
+  width: 70px;
+  height: 70px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  margin-right: 1em;
+  background-color: #FFDE85;
+}
+.logo img {
+  width: auto;
+  height: 60px;
+}
+.logo .logo-top {
+  color: #EEBA2C;
+  font-style: italic;
+  font-weight: 800;
+  font-size: 1.5rem;
+}
+
+nav {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  margin-top: 50px;
+}
+nav .navigation-link {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 4fr;
+  align-items: center;
+  padding: 0.5em 1em;
+  margin: 5px 0px;
+}
+nav .navigation-link figure {
+  display: flex;
+  justify-content: right;
+}
+nav .navigation-link img {
+  height: 22px;
+  aspect-ratio: 1/1;
+}
+nav .navigation-link p {
+  padding-left: 1em;
+  color: inherit;
+}
+nav .current-page {
+  border-radius: 5px;
+  background-color: #EEBA2C;
+  color: black;
+}
+nav .current-page p {
+  font-weight: 800;
+}
+
+.content-section {
+  padding: 5em 4em 3em calc(250px + 4em);
+}
+
+header h1 {
+  font-weight: 600;
+}
+header p {
+  color: #9D9D9D;
+}
+
+/*# sourceMappingURL=styles.css.map */

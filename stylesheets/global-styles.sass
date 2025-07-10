@@ -1,0 +1,141 @@
+
+@import url("https://fonts.googleapis.com/css2?family=Albert+Sans:ital,wght@0,100..900&display=swap");
+
+$red:   #EE2C2C
+$yellow:#EEBA2C
+$blue:  #2CEBEE
+$green: #43EE2C
+
+$background-color:          #161616
+$section-color:             #212121
+$navigation-highlight-color:  $yellow 
+$button-primary-color-1:      $yellow
+$button-primary-color-2:      $red
+$placeholder-color:         #B2B2B2
+$body-font-color:           #9D9D9D 
+
+
+$regular:       400
+$medium:        500
+$semi-bold:     600
+$bold:          700
+$extra-bold:    800
+
+::placeholder 
+    color: $placeholder-color
+
+html 
+    font-size: 0.9em
+    font-family: 'Albert Sans', Arial, Helvetica, sans-serif
+    font-weight: $regular
+
+* 
+    margin: 0
+    padding: 0
+    box-sizing: border-box
+    color: white
+
+h1 
+    font-size: 2.4rem
+h2 
+    font-size: 1.7rem
+h3  
+    font-size: 1.4rem
+h4
+    font-size: 1.2rem
+h5 
+    font-size: 1.05rem
+h6 
+    font-size: 1.0rem
+a 
+    display: flex
+    text-decoration: none
+    color: inherit
+
+body 
+    background-color: $background-color   
+aside 
+    position: fixed
+    top: 0
+    left: 0
+    background-color: $section-color
+    width: 250px
+    height: 100vh
+    padding: 10px
+    font-weight: $medium
+
+.logo 
+    display: flex
+    justify-content: center
+    align-items: center
+    margin-top: 16px
+    padding: 1em
+    
+    figure 
+        width: 70px
+        height: 70px
+        display: flex
+        justify-content: center
+        align-items: center
+        border-radius: 50%
+        margin-right: 1em
+        background-color: #FFDE85
+    
+    img 
+        width: auto
+        height: 60px
+    
+    .logo-top 
+        color: $yellow
+        font-style: italic
+        font-weight: $extra-bold
+        font-size: 1.5rem
+
+nav 
+    display: flex
+    flex-direction: column
+    justify-content: flex-start
+    align-items: center
+    margin-top: 50px
+    
+    .navigation-link 
+        width: 100%
+        display: grid
+        grid-template-columns: 1fr 4fr
+        align-items: center
+        padding: 0.5em 1em
+        margin: 5px 0px
+    
+    .navigation-link figure 
+        display: flex
+        justify-content: right
+    
+    .navigation-link img 
+        height: 22px
+        aspect-ratio: 1/1
+    
+    .navigation-link p 
+        padding-left: 1em
+        color: inherit
+    
+    .current-page 
+        border-radius: 5px
+        background-color: $yellow
+        color: black
+    
+    .current-page p 
+        font-weight: $extra-bold
+    
+
+.content-section
+    padding: 5em 2em 4em 2em
+    margin-left: 250px 
+
+header 
+    h1 
+        font-weight: $semi-bold
+
+    p 
+        color: $body-font-color
+    
+

@@ -1,0 +1,34 @@
+@use 'global-styles.sass'
+
+.dashboard-navigation 
+    display: grid
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr))
+    margin: 3em 0em
+    gap: 2em
+
+    .navigation-button 
+        display: flex
+        justify-content: space-between
+        border-radius: 10px
+        padding: 0.5em 1em 
+
+    .navigation-button *
+        color: black
+
+    .navigation-button hgroup 
+        margin: 0.5em 1em
+
+    .navigation-button img
+        height: 65px
+        opacity: 50%
+
+    .navigation-button:nth-child(1)  
+        background-color: global-styles.$yellow
+
+    .navigation-button:nth-child(2)  
+        background-color: global-styles.$green
+
+    .navigation-button:nth-child(3)  
+        background-color: global-styles.$blue
+
+
