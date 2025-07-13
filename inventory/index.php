@@ -6,50 +6,56 @@
     <title>Dashboard</title>
     <link rel="stylesheet" href="stylesheets/styles.css">
 </head>
-<body>
-    <aside>
-        <a href="../" class="logo">
-            <figure><img src="../images/aacj-logo.png"/></figure>
-            <hgroup>
-                <p class="logo-top">AACJ</p>
-                <p class="logo-bottom">Cycle Parts</p>
-            </hgroup>
-        </a>  
-        <nav>
-            <a href="../" class="navigation-link">
+
+<body class="bg-color-nero"> 
+    <aside class="bg-color-raisin-black">
+        <a id="logo" href="../" class="anchor-blockify">
+            <figure class="border-circle bg-color-jasmine"><img src="../images/aacj-logo.png"/></figure>
+            <div>
+                <p class="h2 color-jasmine font-weight-bold italics">AACJ</p>
+                <p class="font-weight-medium">Cycle Parts</p>
+            </div>
+        </a>
+        
+        <figure id="main-navigation-hamburger" class="hidden-desktop cursor-pointer">
+            <img src="../images/hamburger.png">
+        </figure>
+        
+        <nav id="main-navigation" class="hidden-mobile bg-color-raisin-black font-weight-medium">
+            <a href="../" class="anchor-blockify">
                 <figure>
                     <img src="../images/dashboard.png"/>
                 </figure>
                 <p>Dashboard</p>
             </a>
-            <a href="../inventory/" class="navigation-link current-page">
+            <a href="" class="anchor-blockify border-rounded bg-color-yellow">
                 <figure>
                     <img src="../images/inventory-active.png"/>
                 </figure>
-                <p>Inventory</p>
+                <p class="color-black font-weight-extra-bold">Inventory</p>
             </a>
-            <a href="../create-invoice/" class="navigation-link">
+            <a href="../create-invoice/" class="anchor-blockify">
                 <figure>
                     <img src="../images/create-invoice.png"/>
                 </figure>
                 <p>Create Invoice</p>
             </a>
-            <a href="../purchase-history/" class="navigation-link">
+            <a href="../purchase-history/" class="anchor-blockify">
                 <figure>
                     <img src="../images/purchase-history.png"/>
                 </figure>
                 <p>Purchase History</p>
             </a>
-        </nav>
+        </nav>       
     </aside>
+
+    <div id="content-section">
+        <header>
+            <h1 class="title">Inventory</h1>
+            <p class="subtitle">Manage your products</p>
+        </header>
+    </div>
 </body>
+<script src="../scripts/general-scripts.js"></script>
 </html>
 
-
-<!-- 
-    <div class="content-section">
-        <header>
-            <h1>Dashboard</h1>
-            <h3>What to do today?</h3>
-        </header>
-    </div> -->

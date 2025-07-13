@@ -1,141 +1,323 @@
+/*
+  Styling of sites are divided into two parts. The positioning, 
+  display, and layouts are done in the external css while color
+  styles and font styles are done in line using css classes (
+  like in bootstrap and tailwind). The reasoning of this is mainly
+  to remove styling from positioning and layouting.
 
+  - For width and height, it is manually put in css declarations 
+  - For positioning and grid, mixins are used
+  - For content box spacing like margins, paddings, and borders, it is 
+    manually put in css declarations.
+  - For background, color, font, and text styles, it uses class selectors
+    put inline in html classes. 
+ */
+
+// font imports
 @import url("https://fonts.googleapis.com/css2?family=Albert+Sans:ital,wght@0,100..900&display=swap");
 
-$red:   #EE2C2C
-$yellow:#EEBA2C
-$blue:  #2CEBEE
-$green: #43EE2C
+// general website colors
+$red:                       #EE2C2C
+$yellow:                    #EEBA2C
+$blue:                      #2CEBEE
+$green:                     #43EE2C
+$jasmine:                   #FFDE85
+$nero:                      #161616
+$raisin-black:              #212121
 
-$background-color:          #161616
-$section-color:             #212121
-$navigation-highlight-color:  $yellow 
+// section component colors
 $button-primary-color-1:      $yellow
 $button-primary-color-2:      $red
 $placeholder-color:         #B2B2B2
-$body-font-color:           #9D9D9D 
+
+$title-font-color:            white    
+$subtitle-font-color:       #9D9D9D 
+
+// font weight constants
+$regular:                    400
+$medium:                     500
+$semi-bold:                  600
+$bold:                       700
+$extra-bold:                 800
+
+/*
+    Mixins are used for positions, layouts, and displays
+    as they usually are used again and again in layouts    
+ */
+@mixin flex-row($x-align: left, $y-align: center)
+    display: flex
+    justify-content: $x-align
+    align-items: $y-align
+
+@mixin flex-column($x-align: center, $y-align: flex-start)
+    @include flex-row($y-align, $x-align)
+    flex-direction: column
+
+@mixin grid-row($column-template)
+    width: 100%
+    display: grid
+    grid-template-columns: $column-template
+
+@mixin position ($position-type, $origin, $x-translate: 0, $y-translate: 0)
+    position: $position-type
+    
+    @if $origin == top-left
+        left: $x-translate
+        top: $y-translate
+    @else if $origin == top-right 
+        right: $x-translate
+        top: $y-translate
+    @else if $origin == bottom-left
+        left: $x-translate
+        bottom: $y-translate
+    @else if $origin == bottom-right 
+        right: $x-translate
+        bottom: $y-translate
+    @else 
+        @error "Origin #{$origin} is not defined."
 
 
-$regular:       400
-$medium:        500
-$semi-bold:     600
-$bold:          700
-$extra-bold:    800
-
-::placeholder 
-    color: $placeholder-color
-
-html 
-    font-size: 0.9em
-    font-family: 'Albert Sans', Arial, Helvetica, sans-serif
-    font-weight: $regular
-
+/* 
+    For layouts, positions, and displays, it revolves around 
+    using combinations of tags and ids when referring to an 
+    html element. This encourages semantic use by tags and unique 
+    styling for elements with ids.
+ */
+// resets
 * 
     margin: 0
     padding: 0
     box-sizing: border-box
     color: white
 
-h1 
+// setting pseudo-classeses    
+::placeholder 
+    color: $placeholder-color
+
+// website styles for desktop view
+html 
+    font-size: 14.4px
+    font-family: 'Albert Sans', Arial, Helvetica, sans-serif
+    font-weight: $regular
+
+aside
+    +position (fixed, top-left)
+    width: 270px
+    height: 100vh
+    padding: 2em 1em    
+
+    #logo
+        +flex-row(center)
+    
+    #logo figure
+        +flex-row(center)
+        width: 70px
+        height: 70px
+        margin-right: 10px
+    
+    #logo img
+        height: 60px
+        width: auto
+    
+    #main-navigation-hamburger
+        display: none
+        
+    #main-navigation
+        margin-top: 50px
+    
+    #main-navigation a
+        +grid-row(25px 1fr)
+        padding: 0.5em 2em
+        margin-bottom: 5px  
+    
+    #main-navigation figure
+        +flex-column(right)
+
+    #main-navigation img
+        height: 24px 
+        width: 24px
+    
+    #main-navigation p
+        +flex-column(left, center)
+        padding-left: 1em
+
+#content-section
+    margin-left: 250px 
+    padding: 5em
+
+// debug
+// body *  
+//     border: solid 1px red
+        
+// website styles for mobile view
+@media only screen and (max-width: 600px)  
+    html
+        font-size: 12px
+    aside
+        +flex-row(space-between, center)
+        width: 100vw
+        height: 60px
+        z-index: 2
+
+        #logo figure
+            width: 50px
+            height: 50px
+        
+        #logo img
+            height: 40px
+
+        #main-navigation-hamburger
+            +flex-row(center)
+            height: 50px 
+
+        #main-navigation-hamburger img
+            height: 30px
+
+        #main-navigation
+            +position(fixed, top-right, 0px, 60px)
+            width: 250px
+            margin-top: 0
+            padding: 0.5em      
+
+        #main-navigation a
+            padding: 0.5em 1em
+            margin-bottom: 0.7rem
+
+        #main-navigation img
+            height: 20px 
+            width: 20px
+        
+
+    #content-section
+        +flex-column()
+        margin-left: 0
+        padding: 7em 4em
+
+    header 
+        +flex_column()
+      
+/*
+    Class styling is used to customize backgrounds, fonts, and color
+    of html elements (Although, some classes have its own predefined 
+    styles with combinations of other styles like title and anchor-blockify. 
+    Put these selectors to the class list of an html element to apply these styles below.
+ */    
+
+// generally used in the title of the page
+.title                                  
     font-size: 2.4rem
-h2 
-    font-size: 1.7rem
-h3  
-    font-size: 1.4rem
-h4
-    font-size: 1.2rem
-h5 
-    font-size: 1.05rem
-h6 
-    font-size: 1.0rem
-a 
+    font-weight: $semi-bold
+    color: $title-font-color
+
+// generally used in subtitles and typical texts in the body
+.subtitle                               
+    font-size: 1rem
+    color: $subtitle-font-color
+
+// generally used to convert default styling and display of anchor tags as flex elements
+.anchor-blockify
     display: flex
     text-decoration: none
     color: inherit
 
-body 
-    background-color: $background-color   
-aside 
-    position: fixed
-    top: 0
-    left: 0
-    background-color: $section-color
-    width: 250px
-    height: 100vh
-    padding: 10px
+// cursor styles
+.cursor-pointer
+    cursor: pointer
+
+/*
+    The "hidden" styles are styles used to hide elements, usually wanted when 
+    certain events happened. There are many .hidden styles that are active 
+    only when they reach a certain media query.
+ */
+// hides on all device widths
+.hidden 
+    display: none
+// hidden on non-mobile devices  
+@media only screen and (min-width: 601px) 
+    .hidden-desktop
+        display: none
+// hidden on mobile devices
+@media only screen and (max-width: 600px) 
+    .hidden-mobile
+        display: none 
+
+
+// border radius changes
+.border-rounded
+    border-radius: 5px
+.border-circle
+    border-radius: 50%
+
+// font-style styles 
+.italics
+    font-style: italic
+
+// font-size styles
+.h1 
+    font-size: 2.4rem
+.h2 
+    font-size: 1.7rem
+.h3 
+    font-size: 1.4rem
+.h4 
+    font-size: 1.1rem
+.h5
+    font-size: 0.9rem
+.h6 
+    font-size: 0.8rem
+    
+// font-weight styles
+.font-weight-regular
+    font-weight: $regular
+
+.font-weight-medium
     font-weight: $medium
 
-.logo 
-    display: flex
-    justify-content: center
-    align-items: center
-    margin-top: 16px
-    padding: 1em
-    
-    figure 
-        width: 70px
-        height: 70px
-        display: flex
-        justify-content: center
-        align-items: center
-        border-radius: 50%
-        margin-right: 1em
-        background-color: #FFDE85
-    
-    img 
-        width: auto
-        height: 60px
-    
-    .logo-top 
-        color: $yellow
-        font-style: italic
-        font-weight: $extra-bold
-        font-size: 1.5rem
+.font-weight-semi-bold
+    font-weight: $semi-bold
 
-nav 
-    display: flex
-    flex-direction: column
-    justify-content: flex-start
-    align-items: center
-    margin-top: 50px
-    
-    .navigation-link 
-        width: 100%
-        display: grid
-        grid-template-columns: 1fr 4fr
-        align-items: center
-        padding: 0.5em 1em
-        margin: 5px 0px
-    
-    .navigation-link figure 
-        display: flex
-        justify-content: right
-    
-    .navigation-link img 
-        height: 22px
-        aspect-ratio: 1/1
-    
-    .navigation-link p 
-        padding-left: 1em
-        color: inherit
-    
-    .current-page 
-        border-radius: 5px
-        background-color: $yellow
-        color: black
-    
-    .current-page p 
-        font-weight: $extra-bold
-    
+.font-weight-bold
+    font-weight: $bold
 
-.content-section
-    padding: 5em 2em 4em 2em
-    margin-left: 250px 
+.font-weight-extra-bold
+    font-weight: $extra-bold
 
-header 
-    h1 
-        font-weight: $semi-bold
+// color styles
+.color-black
+    color: black
+.color-white
+    color: white
+.color-red
+    color: $red
+.color-blue
+    color: $blue
+.color-green
+    color: $green
+.color-yellow
+    color: $yellow
+.color-jasmine
+    color: $jasmine
+.color-nero
+    color: $nero
+.color-raisin-black
+    color: $raisin-black
 
-    p 
-        color: $body-font-color
-    
-
+// background color styles
+.bg-color-black
+    background-color: black
+.bg-color-white
+    background-color: white
+.bg-color-red
+    background-color: $red
+.bg-color-blue
+    background-color: $blue
+.bg-color-green
+    background-color: $green
+.bg-color-yellow
+    background-color: $yellow
+.bg-color-jasmine
+    background-color: $jasmine
+.bg-color-nero
+    background-color: $nero
+.bg-color-raisin-black
+    background-color: $raisin-black
