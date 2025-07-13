@@ -148,7 +148,7 @@ aside #main-navigation p {
     align-items: center;
     flex-direction: column;
     margin-left: 0;
-    padding: 7em 4em;
+    padding: 7em 2em;
   }
   header {
     display: flex;
@@ -327,6 +327,27 @@ aside #main-navigation p {
 
 .bg-color-raisin-black {
   background-color: #212121;
+}
+
+#dashboard-navigation {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  margin: 3em 0em;
+  gap: 2em;
+}
+#dashboard-navigation a {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 0.5em 1em;
+}
+#dashboard-navigation hgroup {
+  margin: 0.5em 1em;
+}
+#dashboard-navigation img {
+  height: 65px;
+  opacity: 50%;
 }
 
 /*# sourceMappingURL=styles.css.map */
